@@ -1,0 +1,357 @@
+MOCK INTERVIEW:
+
+*Automation testing with regression perspective.
+
+*When the User story is done according to you:
+manual test cases are completed and when the automation is complete it is marked as DOD..
+
+*out of 10 cases 8 tc's could be automated and rest 2 cannot due to some technical challenges, can we consider it as US is done, what will u do for that US?
+we'll mmove it to next sprint 
+
+*Return of Investmentin Automation, fators to get good returns in automation:
+Automation saves the time and cost in case of regression testing. No functional testers need to do the regression testing manually.
+
+*what are the factors we'll consider for automation/candidate for automation:
+scope of automation
+object identification- 
+usage of application- if it is forgot pwd, 
+decide the action recomentation- partial or full automation
+
+*class cast exception is compile time or runtime exception
+compile time exception
+
+*Threadsafe:
+If A thread is accessing the object and at same time thread B tries to access the same obj so in that case if A makes any changes then thread B won't be able to
+view that changes, it'll see the existing data in the hash map
+
+*is hashtable faster or hashmap
+HashMap is not synchronized, therefore it's faster and uses less memory than Hashtable. Generally, unsynchronized objects are faster than synchronized ones
+in a single threaded application.  
+
+*stackoverflow is error or exception. why do we get this error
+its an error. this issue happens if the stack is full, and cannot be catched using try catch
+
+*Garbage collector is applicable for heap memory or stack memory
+Heap memory. 
+
+*when do we use Finalize() method 
+its a part of object class and use method for closing operations. it executes only once.
+
+*will garbage method will call the finalize method of other class
+No it won't. It'll call only to the associated method. i.e. we need to override the method.
+
+*In which case u will be considering a class as a private constructor. Or in which case we'll be using private constructor in automation framework
+A private constructor in Java is used in restricting object creation. It is a special instance constructor used in static member-only classes. If a 
+constructor is declared as private, then its objects are only accessible from within the declared class. You cannot access its objects from outside the 
+constructor class.
+Impact of Private Constructor in Java:-
+The private constructors cannot access derived classes from another class. Thus, we have to give a public function, which calls the private constructor. 
+In case, the object is not initialized, or we have to send back an instance to the object if it was initialized. This is especially very useful for objects, 
+which cannot be initialized. A private constructor is used in the following cases:
+
+The respective classes, which have only static methods and members.
+The specific classes, which have only widely used static final members (constants).
+To incorporate singletons.
+To incorporate the factory methods.
+
+*can we acheive call by ref in POM in framework
+when we create classes for pages, that time, we create webelements in the class then we use those webelements in following methods in the page class.
+
+*5 generic utilities in framework that can work in any kind of applications
+in a text box we send the text
+click button/radio/checkbox
+javascript executor
+for this we create utility class and we maintain all these operations under the utility class, and using that webelemet we can call those methods 
+
+
+*@FindBy annotation in Page Factory
+
+The @FindBy annotation is used to declare and initialize web element variables using the desired web locators in Selenium. Hence, you can find the 
+web elements using popular locators like ID, Name, Link Text, Class Name, etc
+  
+*can we write a try block without catch
+No.coz to handle a exception we need a catch block to handle it
+
+*can we write finally block with try without catch block
+yes
+
+*What happens if we provide a return type to a constructor?
+If we provide a return type to a constructor, it will function as a general method. But, the compiler will display a warning message, 
+"This method has a Constructor name".
+
+Consider the below example:
+
+public class TestConstructor {  
+    int TestConstructor()  
+    {  
+        return 0;  
+    }  
+
+*What are the uses of private constructors?
+1. can be used as internal constructor chaining
+2. singleton class desgn pattern
+
+*Why constructor name is similar to the class name?
+When we create an object of a class using a new keyword, it should have information about that particular class. That is why the constructor's name must 
+be similar to the class name.
+
+*String Immutability.
+String x = "abc";
+String y = "abc";
+x.concat(y);		abcabc will be stored but until a reference is not allocated to that it won't get called
+syso(x); 		o/p will be abc
+Now, there'll be concatenation happening in this case but the o/p will be abc only if printing x due to string immutability
+ 
+So, if String z = x.concat(y); 
+syso(z);		//o/p will be abcabc for z
+
+
+*How many String Objects will be created? or how many ways we can initialize a String?
+
+String n = new String("Hello World");
+
+It'll create 2 Objects inside the memory. How it works?
+There're 2 memories Stack and Heap. Heap will have String Constant pool. Here ref. n will be stored in Stack. n is pointing to a object that is Heap Memory that has 
+"Hello World" and at the same time it'll create a new bject in SCP as "Hello World".
+
+Lets say if I again create a new string obj: String n2 = new String("Hello World");
+In this case "Hello World" will get stored only in heap and ref n2 in stack. SCP will not have n2 obj again as it is already present(similar).
+
+Now in case of String Literal: String s1 = "hello world";
+s1 will be stored in stack and "hello world" will be stored in SCP. As there's no object nothing will be stored in heap.
+If I write String s2 = "hello world";
+s2 will be pointing to s1.. in SCP.
+
+
+shantanu.sawant@tcs.com
+
+*What is static in Java?
+The static keyword is a non-access modifier used for methods and attributes. Static methods/attributes can be accessed without creating an object of a class.
+We can apply static keyword with variables, methods, blocks and nested classes. The static keyword belongs to the class than an instance of the class.
+
+The static can be:
+
+Variable (also known as a class variable)
+Method (also known as a class method)
+Block
+Nested class
+
+**Explain about Static Block.
+Static blocks are always executed 1st if declared in a Class. We can define multiple static blocks in a class and they get executed sequentially. So, if there
+is main mthod and static method and static block, static block executes first then the main method and later other type of methods.
+for eg:
+
+static{
+syso("this is a static block");
+}
+public static void test(){
+syso("test");
+}
+public static void main(String[] args){
+syso("main");
+}
+O/P:  this is a static block
+	test
+	main
+
+**Why the constructors cannot be static?
+
+The constructors in Java can not be static because if the constructors are marked as static, they can not be called from the child class; thus, the child 
+class's object will not be created. The program will not be compiled and throw a compile-time error.
+
+
+**Can constructor be static or final?
+No, a constructor can't be made final. A final method cannot be overridden by any subclasses.
+
+
+**How can we run a java program without making any object?
+Just by calling static methods in main class, without creating any object.
+Public class staticBlock{
+static{
+syso("this is a static block");
+}
+public static void test(){
+syso("test");
+}
+public static void main(String[] args){
+syso("main");
+test(); //calling static methods directly
+staticBlock.test(); //calling static methods using class name
+}
+}
+
+**What is difference between a static block and static method?
+Common thing is we don't need to create an object.
+Static block will get called automatically the moment a class is loaded.
+Static method will get called explicitly just by direct calling or by class name.
+Static methods can be called using another static method.
+
+**How can we create an object if we make the constructor private
+Either create a static public method or create a static block. In this we can create an object
+
+**Is it possible to compile java program without main method?
+Yes..
+Even if u declare multiple static blocks in a java class, it'll get compile..without main method(create a main method in another class and call the static
+value from another class).
+
+**Can we initialize member variable within a staic block?
+Yes we can initialise member variables within a static block. Just need to create a object inside a static block.
+Public class staticBlock{
+String name;
+static{
+staticBlock sb = new staticBlock();
+sb.name = "Akki";
+syso("this is a static block");
+}
+public static void main(String[] args){
+}
+}
+
+**
+
+Difference between string, string buffer and string builder.
+
+String: String objects are immutable
+If the content is fixed, wont change frequently
+
+String Buffer: String Buffer objects are mutable.
+If the content is not fixed, keeps changing and thread safety is required.
+Every methods are synchronized.
+
+String Builder:
+If the content is not fixed, keeps changing, objects are mutable and thread safety is not required.
+
+************************
+
+Why Java does not support multiple inheritance.
+
+Because it'll get confused to call the method.. as same methods defined in the class. That will lead to diamond ambiguity issue.
+
+We can achieve multiple inheritance using interface as there's declaration in interface and the initialization will be done once.
+
+************************
+
+String literal and String object difference.
+String Literal means a string without an object no new keyword.
+String s1 = "AKKI";
+AKKi is the value assigned to the literal s1.
+It calls intern() method internally!
+String literal is placed in String constant pool
+If we create a new literal in string with same content it'll refer to the reference.
+
+String object:
+String s2 = new String("Veer");
+String object is placed in Heap Memory
+If we create a string object with same content i.e. Veer, it'll forcefully create another object in Heap Memory
+ 
+For eg:
+
+String s1 = "Akki";
+String s2 = "Akki";
+		
+String s3 = new String("Akki");
+String s4 = new String("Akki");
+		
+System.out.println(s1 == s2); // will compare reference as they point to same ref in string constant pool
+System.out.println(s1 == s3); //s1 is literal and s3 is object and they refer to different memory locations
+System.out.println(s3 == s4); //both are different objects in heap memory
+System.out.println(s1.equals(s4)); //though s1 is literal and s3 is object, we're comparing the content
+
+********
+
+**Constructor Chaining:
+
+Constructor is used to create an instance of a class.
+Constructor chaining is a sequence of invoking constructors upon initializing an object.
+In constructor chain, a constructor is called from another constructor in the same class this process is known as constructor chaining. It occurs through inheritance.
+
+We can achieve constructor chaining in two ways:
+
+Within the same class: If the constructors belong to the same class, we use this
+eg.
+public class ConstructorChain  
+{  
+//default constructor  
+ConstructorChain()  
+{  
+this("Javatpoint");  
+System.out.println("Default constructor called.");  
+}  
+//parameterized constructor  
+ConstructorChain(String str)  
+{  
+System.out.println("Parameterized constructor called");  
+}  
+//main method  
+public static void main(String args[])   
+{   
+//initializes the instance of example class  
+ConstructorChain cc = new ConstructorChain()
+From the base class: If the constructor belongs to different classes (parent and child classes), we use the super keyword to call the constructor from the base class.
+
+
+**********
+
+**Synchronization in Java
+Synchronization in Java is the capability to control the access of multiple threads to any shared resource.
+
+Java Synchronization is better option where we want to allow only one thread to access the shared resource.
+
+Why use Synchronization?
+The synchronization is mainly used to
+
+To prevent thread interference.
+To prevent consistency problem.
+
+Types of Synchronization:
+Process Synchronization
+Thread Synchronization
+
+**********
+
+**Why does Multiple Inheritance issue come in classes but not in Interface.
+
+The reason is Class have multiple method Implementations, which method should I execute.. But in interface there's only method declaration but no implementation.
+Since jdk 1.8 we've default methods in interface but, still there's no issue for multiple inheritance.
+We can achieve inheritance with normal class and obj class by below ex: give the ans as NO... refer below..
+[NOTE: if a child class extends object class then only it is a direct class of object class. So if child A extends Parent B extends parent object class where we see multilevel inheritance can be achieved.	 but no multiple inheritance.]
+
+**********
+
+** What are Custom Exceptions in Java.
+
+Creating our own Exception is known as custom exception or user-defined exception. Basically, Java custom exceptions are used to customize the exception according to user need.
+
+** How to create ur own custom exception in java
+we'll create a class, and that class will extend either exception class or throwable class and inside that class will override the tostring() method of object
+class where we'll return the custom string from that toString() that which exception we want to throw.
+
+**********
+
+** Difference between Comparable and Comparator:
+
+Comparable:
+-This allows single sorting sequence in collections. We can sort the collection on the basis of a single element such as id, name, and price.
+-This affects the original class that is modified. 
+-This provides compareTo() method to sort the elements
+-We can sort the list elements of Comparable type by Collections.sort(List) method.
+
+Comparator:
+-This allows multiple sorting sequence in collection. We can sort the collection on the basis of a multiple element such as id, name, and price.
+-This doesn't affect the original class that is not modified.
+-This provides compare() to sort the elements.
+-We can sort the list elements of Comparator type by Collections.sort(List, Comparator) method.
+
+**********
+
+** Difference between Array and List:
+
+Array:
+-It has fixed size 
+-All elements in array must be of same datatype
+-Arrays are less flexible as their size cannot be easily changed.
+
+List:
+-List are dynamic and can change in size.
+-List can accommodate elements of different datatype.
+-Lists are more flexible, allowing easy addition or removal of elements.

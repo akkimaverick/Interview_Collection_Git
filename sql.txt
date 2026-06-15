@@ -1,0 +1,287 @@
+ SQL JOINS from new session:
+
+INNER JOIN:
+A common part of table A and B.. Should return the records that have matching values in given tables.
+ EX. 1:
+CUSTOMER 			TABLE
+custID	CustNM			TableNo	 custID
+1	Tom			  1	  NULL
+2	Peter			  2	   1
+3	Lisa			  3	   2
+4	Robert			  4	   5
+5	Naveen			  5	  NULL	
+
+It should provide the output as below:
+
+CustID		Name		TableNo
+1		Tom		 2
+2		Peter		 3
+5		Naveen		 4
+
+Query for inner join: [c and t are the aliases used..]
+
+
+Select c.CustNm, t.TableNo, t.CustId FROM CUSTOMER c INNER JOIN TABLE t ON c.custID = t.custID;
+
+Ex. 2:
+
+EMPLOYEE				DEPARTMENT			
+eID	eName	DeptID		DeptID		deptNM
+1	Tom	10		10		HR
+2	Peter	20		20		ADMIN
+3	Naveen	30		30		FINANCE
+4	Lisa	30		
+
+Query: e and d would be th alias names
+
+SELECT e.eID, e.eName, d.DeptID, d.deptNM from EMPLOYEE e INNER JOIN DEPARTMENT d ON e.DeptID = d.DeptID;
+
+
+***********************************************
+
+**LEFT OUTER JOIN or LEFT JOIN:
+
+	Supplier				Region
+
+SuplierNM	RegionID		RegionID	RegionName	
+John		1			1		EU
+Anna		3			2		ME
+Robby		2			3		USA
+Jim		4			4		Africa
+Tom		NULL			5		Asia
+
+QUERY:
+
+
+SELECT s.SulierNM, s.RegionID, r.RegionName FROM Supplier s LETOUTER JOIN Region r ON s.RegionID = r.RegionID;
+
+O/P
+
+SupplierNM	RegionNM
+
+EX. 2:
+
+LOAN				Customer
+LNo.	Branch	Amnt		CNm.	LNo.
+1	karad	1k		c1	1
+2	pun	2k		c2	2
+3	mum	3k		c3	3	
+4	sata	4k		c4	5
+
+Select l.LNo, l.Branch, l.Amnt, c.CNm from LOAN l LEFT OUTER JOIN Customer c ON l.LNo = c.LNo;
+
+***********************************************
+
+RIGHT OUTER JOI or RIGHT JOIN:
+
+LOAN				Customer
+LNo.	Branch	Amnt		CNm.	LNo.
+1	karad	1k		c1	1
+2	pun	2k		c2	2
+3	mum	3k		c3	3	
+4	sata	4k		c4	5
+
+
+Select c.CNm, c.LNo, l.Branch, l.Amnt FROM LOAN l RIGHT OUTER JOIN Customer c ON l.LNo == c.LNo;
+
+
+***********************************************
+
+FULL OUTER JOIN 
+
+
+***********************************************
+
+HIGHEST SALARY/ 2nd HIGHEST SALARY/ 5th HIGHEST SALARY
+
+Employee
+eID	eNM	eSalary
+1	Akki	3000
+2	Kiki	4000
+3	hem	1500
+4	dia	6000
+
+
+1. get max salary from the employee table
+
+SELECT * FROM Employe
+SELECT max(eSalary) from Employee;
+
+2. get 2nd highest salary from the employee table
+
+Select max(eSalary) from Employee where eSalary < (select max(eSalary) from Employee)
+OR
+Select eSalary from Employee ORDER BY eSalary DESC LIMIT 2-1,1;
+
+3. get 3rd highest salary from the employee table
+
+Select eSalary from Employee ORDER BY eSalary DESC LIMIT 3-1,1;
+
+4. get 5th highest salary from the employee table
+
+Select eSalary from Employee ORDER BY eSalary DESC LIMIT 5-1,1;
+
+***********************************************
+S
+ASCENDING and DESCENDING order:
+
+Select * from Employee ORDER BY Age DESC;
+
+Order the values based on 2 column combinations:
+
+Select * from Employee ORDER BY EmpNM, Age ASC;
+
+Query based on less than maximum than, AND operator conditions;
+
+Select * from Employee where age = 30 AND EmpID > 5 AND Country = USA;
+
+Query based in a way not on specific country except the others.
+
+Select * from Employee where NOT Country = 'USA';
+
+Quer to take AND and OR operators together
+
+Select * from Employee where Country = "Germany" AND (City = "Berlin" OR City = "Munich");
+
+***********************************************
+
+PATTERNS using LIKE keyword:
+
+
+Select * from Employee where Country LIKE 'U%'; //this will retrieve the country names that are starting with name U.
+
+
+Select * from Employee where Country LIKE '%a'; //this will retrieve the country names that are ending with a.
+
+Select * from Employee where Country LIKE '%at%'; //this will retrieve the country names that are having 'at' in their names.
+
+Select * from Employee where CountryNm LIKE '_h%'; //this will retrieve the country names that are having 'h' in their names but starting with any character before h.
+
+Select * from Employee where City LIKE 'T__%'; //this will retrieve the country names that are starting with T in their names.
+
+Select * from Employee where EmployeNM LIKE 'A%V'; %'; //this will retrieve the employee names that are starting with A and ending with V in their names.
+
+NULL NOT NULL
+
+Select * from Employee where phoneno. is NOT NULL;
+
+
+***********************************************
+
+Real Time Interview Questions on all kind of JOINS:
+
+Customer Table (c):
+
+customer_id	first_name	last_name	amount	order_date	category	gender
+110		Ajeet		Mishra		2000	2022		cosmetics	M
+111		Rana		sharma		5000	2000		clothing	M
+112		Divya		khatri		3000	2021		cosmetics	F
+113		Vikas		kohli		1500	2019		clothing	M
+114		Rimi		kimari		8000	2010		jwelery		F
+
+
+Product Table (p):
+
+product_id	customer_id	product_name
+1001		112		skingel
+1002		110		facecleanser
+1003		114		earings
+1004		120		headphone
+1008		111		jeans
+
+Based on the above tables complete the following queries and dislay the o/p as well:
+
+**Q1. Get customer name and product name order by first name using INNER JOIN.
+
+SELECT c.first_name, p.product_name FROM customer c INNER JOIN product p ON c.customer_id = .customer_id ORDER BY c.first_name;
+
+O/P:
+customer_id	first_name	product_name
+110		Ajeet		facecleanser
+112		Divya		skingel
+111		Rana		jeans
+114		Rimi		earings
+
+**Q2. Get customer name and product name order by first name using LEFT OUTER JOIN.
+
+SELECT c.first_name, p.product_name from customer c LEFT OUTER JOIN product p ON c.customer_id = p.customer_id ORDER BY c.first_name;
+
+O/P:
+customer_id	first_name	product_name
+110		Ajeet		facecleanser
+112		Divya		skingel
+111		Rana		jeans
+114		Rimi		earings
+113		Vikas		NULl
+
+**Q3. Get all product names even if they have not matched any Customer id, in the left table, order by firstname from
+
+SELECT c.first_name, p.product_name from customer c RIGHT OUTER JOIN product p ON c.customer_id = p.customer_id ORDER BY c.first_name;
+
+O/P:
+customer_id	first_name	product_name
+110		Ajeet		facecleanser
+112		Divya		skingel
+111		Rana		jeans
+114		Rimi		earings
+120		NULL		headphones
+
+**Q4. Write a query to find out the Customer name who has not been assigned any product, and display.
+
+SELECT c.first_name, IS NULL(p.product_name,'no data avail') AS product FROM customer c LEFT OUTER JOIN product p ON c.customer_id = p.customer_id WHERE p.product_name IS NULL;
+
+O/P: 
+first_name	produc_name
+Vikas		no data avail	
+
+**Q5. Write a query to find out the product name which is not assigned to any employee( tables:- [CustomerDetail],[ProductDetail]).
+
+SELECT p.product_name FROM customer c RIGHT OUTER JOIN cstomer c ON c.customer_id = p.customer_id WHERE c.first_name IS NULL;
+
+O/P: 
+product_name
+Headhones
+
+
+**Q6. Write down the query to fetch CustomerName & Product who has assigned more than one project.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

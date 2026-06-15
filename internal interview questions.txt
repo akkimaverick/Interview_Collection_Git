@@ -1,0 +1,47 @@
+Java Questions:-
+
+1. Write a program to find the largest no. from the array list
+int a[] = {2,3,4,23,44,5,12,15,60};
+
+2. Write a program for the given string String S = "India Pune";
+Output Should be: "Pune India"
+
+3. Write a program for prime no
+
+4. Given statement, which one is the correct one
+String obj = new
+syso("Pune");
+String obj1 = "Pune";
+
+5. List<String> ls = new ArrayList<>(); - What is the difference
+
+6. List<Sring> ls = new List<>(); - can we write this
+
+7. What would be the output if we declare in this case.
+final i = 10;
+sysout(10+1); 
+
+8. what's the difference between Interface and Abstraction
+
+9. Explain try and catch block with an example
+		
+Selenium Questions:
+
+1. Is webElement a class or Interface
+
+2. difference between Assert and Verify.
+
+3. Difference between Soft assert and hard assert
+
+4. purpose of getOptions() in selenium
+
+5. Write a syntax for explicit wait
+
+6. how to inspect the button using contains method
+
+7. handling dropdown using select class and select a required option from the dropdown list
+
+8. method used to read and write excel in selenium
+
+9. How do we define the screen shot method in case where the exception comes
+ 

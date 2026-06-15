@@ -1,0 +1,354 @@
+All Character Occurrence:
+
+public static void getAllCharacters(String name) {
+		HashMap<Character, Integer> hm = new HashMap<Character, Integer>();
+		char[] ch = name.toCharArray();
+		
+		for(char c : ch) {
+			if(hm.containsKey(c)) {
+				hm.put(c, hm.get(c)+1);
+			}else {
+				hm.put(c, 1);
+			}
+		}
+		System.out.println(name+" : "+hm);
+	}
+	public static void main(String[] args) {
+		
+		getAllCharacters("Akshay Veer Tulsan");
+
+	}
+
+*******************************************
+
+package JavaPrograms;
+
+public class PallindromeNo {
+	public static void isPallindrome(int num) {
+		
+		int r = 0;
+		int sum = 0;
+		int temp;
+		
+		temp = num;
+		
+		while(num>0) {
+			r = num%10;
+			sum = sum * (10+r);
+			num = num/10;
+		}
+		if(sum==temp) {
+			System.out.println("no is pallindrome");
+		}else {
+			System.out.println("no is not pallindrome");
+		}
+	}
+	public static void main(String[] args) {
+		isPallindrome(151);
+
+	}
+
+}
+
+
+*******************************************
+
+ArmStrong no
+
+public static void isArmstrong(int num){
+
+int r;
+int cube = 0;
+int t;
+
+t = num;
+
+while(num > 0){
+
+r = num%10;
+cube = cube+(r*r*r);
+num = num/10;
+
+}
+
+if(t == cube){
+syso("no is arm");
+}else{
+syso("no is not arm");
+}
+}
+public static void main(String[] args){
+isArmstrong(153);
+}
+
+*******************************************
+String reverse
+
+String str = "Akki veer";
+
+String rev = " ";
+
+int len = str.length();
+
+for(int i=len-1; i>=0; i--){
+rev = rev + str.charAt(i);
+}
+syso(rev);
+
+
+*******************************************
+int reverse:
+
+public static void main(String[] args){
+
+int num = 1234;
+
+int rev = 0;
+
+while(num!=0){
+
+rev = rev * 10 + num%10;
+num = num/10;
+}
+syso(rev);
+}
+
+*******************************************
+
+Prime No
+
+public static void isrime(int num){
+if(num<=1)
+return false;
+
+for(int i=2; i<num; i++){
+
+if(num%i==0){
+return false;
+}
+}
+return true;
+}
+
+public static void isrimeNo(int num){
+for(int i=2; i<num; i++){
+
+if(isPrime(i)){
+syso(i + " ");
+}
+}
+}
+
+*******************************************
+
+Smallest and Larest
+
+int no[] = {22,31,122,4535,233,55,0,-5,-12};
+
+int largest = no[0];
+int smallest = no[0];
+
+for(int i=0; i<no.length; i++){
+if(no[i]>largest){
+largest = no[i];
+}else if(no[i]<smallest){
+smallest = no[i];
+}
+}
+
+syso(largest);
+syso(smallest);
+
+*******************************************
+
+Missing No
+
+int no[] = {1,2,3,5,6,7};
+
+int sum1 = 0;
+
+for(int i=0; i<no.length(); i++){
+sum1 = sum1 + no[i];
+}
+
+int sum2 = 0;
+
+for(int j=1; j<=7; j++){
+sum2 = sum2 + j;
+}
+
+*******************************************
+
+Swap String 
+
+String a = "akki";
+
+String b = "veer";
+
+a = a+b;
+
+b = a.subString(0, a.length()-b.length());
+
+a = a.subString(b.length());
+
+*******************************************
+
+Duplicate Elements in String
+
+String str[] = {"java","new","test","java","new"};
+
+Set<String> ss = new HashSet<>();
+
+for(String s : str){
+
+if(ss.add(s)==flase){
+syso(ss);
+}
+}
+
+*******************************************
+
+public static void getCharOccurence(String str, char ch){
+
+int count = 0;
+
+for(char c : str.toCharArray()){
+
+if(c==ch){
+count++;
+}
+}
+syso(count+":"+ch);
+}
+
+public static void main(String[] args) {
+String str = "if this is what";
+getCharOccurence(str, 'i');
+}
+
+int count = 0;
+for(int i=0; i<str.length(); i++){
+if(str.charAt(i)=='a'){
+count++;
+}
+}
+
+
+*******************************************
+Remove duplicates
+
+ArrayList<Integer> nums = new ArrayList<>(Arrays.asList(1,2,1,2,3,4,5,6,6,7,8,9,9,33));
+
+LinkedHashSet<String> distinct = new LinkedHashSet<>(nums);
+
+ArrayList<Integer> afterDistinct = new ArrayList<>(distinct);
+
+*******************************************
+
+Remove Junks
+
+String s = "#$@#aakkiDADA47323";
+
+s = s.replaceAll("[^a-zA-Z0-9]", " ");
+
+*******************************************
+Reverse a string without changing the position
+
+public static void main(String[] args) {
+        String s = "Hello India";
+        String[] ch = s.split(" ");
+        for (String chr : ch) {
+            String rev = " ";
+            for (int i = chr.length() - 1; i >= 0; i--) {
+                rev = rev + chr.charAt(i);
+            }
+            System.out.print(rev + " ");
+        }
+    }
+
+
+*******************************************
+
+Factorial No.
+
+public static int isFactorial(int num){
+
+int fact = 1;
+
+for(int i=1; i<=num; i++){
+fact = fact * i;
+}
+return fact;
+}
+
+psvm(){
+isFactorial(4);
+}
+
+*******************************************
+
+Getting the last/2nd last word from the string
+
+String str = "the great one";
+
+String[] s = str.split(" ");
+
+String ss = s[s.length-1];
+
+*******************************************
+
+Swap the strings for a single String variable:
+
+String s = "Akshay veer";
+
+String[] str = s.slit(" ");
+
+String t = " ";
+
+for(int i=str.length-1; i>=0; i--){
+t = t + str[i].toString();
+t = t + " ";
+}
+syso(t);
+
+*******************************************
+
+Fibonacci Series:
+
+public static void main(String[] args){
+
+int n1=0, n2=0, sum=0;
+
+syso(n1+" "+n2);
+for(int i=2; i<=10; i++){
+sum = n1+n2;
+syso(" "+sum);
+n1=n2;
+n2=sum;
+
+}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    

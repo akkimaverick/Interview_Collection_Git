@@ -1,0 +1,178 @@
+*What is an API?
+Application Programming Interface, its a middleware/softawre to communicate between two applications. Applications like google maps api, amazon advertising apis
+youtube api are examples of APi
+
+*Differences between API and Webservices
+All webservices are API's but all API's are not web services for eg. when a request is sent/served over the network then we call it webservice APIs.
+Now when a add() is called it is not called over the n/w hence it acts as an normal API without n/w. Webservices would ask for a URL, what parameters to pass.
+A webservice use 3 types of communication as: SOAP, REST, XML-RPC
+
+*What are the limits of API usage?
+It has  certain limits set up by provider. There're multiple API's to which we're authenticated. Depends on provider to provider. For eg we're using crypto
+or share market API's and get data of financial company, so they'll restrict u that u can call 60/100 API's in a min and will define a costing, so this is
+the limitations for uses of API.
+
+*Architectural styles for creating APi
+HTTP client-server communication
+XML/JASOn for formatting
+Simple URI for the formatting address
+
+*API Testing
+will check if it meets the expectations reg functionality, reliability, performance and security of application.
+
+*Common protocols used in API
+JMS, REST, HTTP, SOAP
+
+*Principles of API testing
+Setup:Create objects, start services, initialize data
+Execution: steps to apply API, like get response, validate response, results like status code, correct jSon response
+Verification: oracles to evaluate result of execution
+Reporting: pass/failed or blocked
+
+*What are the common API testing Types?
+validation testing, Functional esting, Performance Testing, UI Testing, Runtime/Error Detection, Security Testing, Penetration Testing, Fuzz testing.
+
+*Procedure to perform API Testing:
+Check on which environment to do the test. Collect the data for test, like get/post call, header, request payload and write the tc's, configure method
+validation, execute the API Tests.
+Defining the correct input parameters(query parameter/path parameter)
+verifying the calls of the mixture of two or more added value parameters(datas should be retrieved within the given range, like 1st parameter is hotel nm
+and 2nd parameter is cost)
+
+*What must be checked while performing API Testing?
+Accuracy of data, schema validation, HTTP status codes, data type, validations, order and completeness, authorization checks, response timeout(response of
+data immediately).
+
+*Challenges faced in API testing?
+Parameter selection: by applying the filters and checking the outcome so that easy to validate the received data
+Call sequecing: internally API's calling each other. intermediate api's are getting failed or not
+Output verification and validation: if correct data is getting displayed in JSON body. for a product if the name is getting fetched as per its ID
+
+*What is REST?
+REST is not a protocol, but a stylr of developing web services that uses http methods like post, put, get calls to define actions.
+
+*What is RESTful webservice?
+these are no protocols like SOAP but  it uses HTTP methods/protocol to implement the concept  of REST architecture. Restful webservices define, URI(unified resource
+identifier), provides resource representation like JSON and set of HTTP methods.
+
+*Difference between URI(Uniform resource Identifier), URN(Uniform Resource Name) and URL(Uniform resource Locator):
+from this path: http://thinkzarahatke.com/author/amty.html#post
+
+URI: http://thinkzarahatke.com/author/amty.html#post
+Format of URI is: <protocol>://<service-name>/<Resource-Type>/<ResourceID>
+URN: //thinkzarahatke.com/author/amty.html#post
+URL: http://thinkzarahatke.com/author/amty.html
+
+*Stateful and stateless api difference?
+Stateless api: does not store any user profile or context, server has no idea about the user. that data will be stored in cached db.
+Soin case of stateless API, the user information(user content, session id) is never stored in server side but stored in catched db.
+
+*basic information about POSTMAN: In terms of request either a get/post/put calls:-
+in URI: http://thinkzarahatke.com/author/amty.html#post.. we have a resource i.e. html#ost, will give all the details.
+
+Headers: This will have a data in form of Key and value pair. for eg. Key is Authorization and value is Token(Bearer..) OR 
+content-type i.e. application JSON
+content-length <calculated when request is sent>
+
+Body: This will have ur JSON payload, like name, gender, age etc type of data
+
+*Most commonly used HTTP calls:
+
+GET: Retreive the data from specific resource. Get requests can be catched or bookmarked. GET request should never be used while deailng with sensitive data.
+
+POST: To create and update a resource. i.e. data of a user. POST req cannot be catched or stored in history.
+
+PUT: can only update the user information/resource.
+
+PATCH: can update only specific information that we need to update. just update name. It'll not update entire object but a single entity.
+
+DELETE: remove the specified resource.
+
+OPTIONS: it'll show how many http options are allowed to serve the request/url. Describe what communication is allowed for target resource
+
+HEAD: HEAD and GET both are same. but HEAD will just give the header information, it won't give u any response body(its a huge payload under body)
+
+*What is payload in RESful webservices:
+Payload means the data that u r sending with the request and the data that u r getting in the response
+
+*What is the upper limit of payload to pass in a  POST method
+GET we've only service url and size should not extend to max url length i.e. 2048 characters.
+POST call no limitationsof characters its unlimited but has a large bandwidth
+
+*** HTTP status code
+2xx codes
+200- success
+201- any data has been created using POST call
+202- Accepted
+204- No content i.e when a data is deleted, the content is not found and hence the code is 204. Found during DELETE call.
+
+3xx codes
+304- Not Modified: if a doc is not modified
+
+4xx codes
+400- Bad Request: when a wrong JSON payload is sent, incorrect URI, comma missing
+401- unauthorized: not authorised, authentication issue, token is expired
+403- forbidden: server understood the request but cannot process/fulfil it as u r not authorized.
+404- not found: sending req to serv and user is not available in DB then it'll send the error from server side that not found.
+
+5xx codes
+500- internal server error: server is crashed, or server is not up and down completely. Or unable to understand the request.
+
+*********88Important JSON Path Expressions:-
+ 
+JASON path evaluator to get the unique id's data from the JSON payload.
+To read the JSON and verify if a correct JASON is written ot not we copy the JSON code into JSONPAth evaluator, so diff websites like JSONPATH online evaluator
+are used.
+You can use jasonpath.herokuapp.com for checking the JSON values by using different expressions:
+for e.g. 
+{
+ "Store":{
+	"book":[			//book array started
+	 {
+	   "category":"reference"	
+	   "author":"Rees"
+	   "title":"sayings of century"			JSON Expressions to get the proper outcome like get store all data
+	   "price":8.95$				$.Store and click on go, all records will get fetched!
+	 }
+	 {						To get all the authors from that snippet
+	   "category":"fiction"				$.Store.book[*].author //this'll return all auth names, we're passing book array
+	   "author":"Sinca"
+	   "title":"fury"				Another way to write the expression for e.g. to get all the price list
+	   "price":8.7$					$.Store..price
+	 }	
+	 {
+	   "category":"reference"	
+	   "author":"Samuel"
+	   "title":"glanich"
+	   "price":9.95$
+	 }
+	]				//book array ended
+}
+
+**********************************************************************
+
+** What are different Authentications in API?
+HTTP- Basic/Bearer, Digest, OAuth
+Basic:
+Basic authentication is an HTTP-based authentication approach and is the simplest way to secure REST APIs. It uses a Base64 format to encode usernames and passwords, both of which are stored in the HTTP header.
+Here’s an example of a Basic Auth in a request header:
+Authorization: Basic bG9sOnNlY3VyZQ==
+
+Bearer Auth:
+Bearer authentication (also called token authentication) is an HTTP authentication scheme that involves security tokens called bearer tokens.
+The client must send this token in the Authorization header when making requests to protected resources:
+Authorization: Bearer <token>
+
+OAuth:
+
+The most common implementations of OAuth use one or both of these tokens instead:
+
+access token: sent like an API key, it allows the application to access a user’s data; optionally, access tokens can expire.
+refresh token: optionally part of an OAuth flow, refresh tokens retrieve a new access token if they have expired. OAuth2 combines Authentication and Authorization to allow more sophisticated scope and validity control.
+
+
+** Have you used Asertions in API? What are they?
+Assertions allow you to validate HTTP responses in your API tests. For example, a basic assertion would ensure that a request to assertible.com returns a Status code 200 every time -- or that the homepage contains the text Assertible.
+
+** What is API caching?
+Caching is the ability to store copies of frequently accessed data in several places along the request-response path. The REST APIs are cacheable. It is one of its architectural constraints. When a client requests some resources, the request first goes through a cache and then to the server.

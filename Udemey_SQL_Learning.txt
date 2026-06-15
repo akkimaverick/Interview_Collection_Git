@@ -1,0 +1,134 @@
+take bitbar idea on google.. understand the app how it works
+
+Employee Table:
+
+EMP_Id  EMP_Name  EMP_Type  EMP_Work
+11	Akki	  Junior	QA
+12	Kevin	  Senior	Dev
+13	Alex	  Lead		QA
+14	Dom	  Consultant  	BA
+
+
+Company Table
+
+
+COM_Id  COM_Name  COM_Type  COM_Revenue
+11	Accent	  IT		20 Million
+12	Trinity	  Automobile	14 Million
+13	CT	  IT		29 Million
+14	Zydus	  Pharma  	50 Million
+15	FIS	  IT		20 Million
+16	CT	  IT		11 Million
+17	Trinity	  Automobile	9  Million
+
+
+** Where clause for filtration of data:
+
+Select * from Employee where EMP_Name = 'Alex';
+Alex named employees data will get filtered
+
+** to filter specific columns based on specific condition
+Select EMP_Name, EMP_ID from Employee where EMP_Work = 'QA';
+
+so based on QA 2 column data will be displayed.
+
+** Fetch records of employee that has records more than employee id 12:
+Select * from Employee where EMP_ID > 12;
+
+** Fetching the data based on Filtering by LIST(IN, NOT IN) and by RANGE(BETWEEN, numeric value)  :
+Filter the data based on company type:
+
+Select * from Company where COM_TYPE = 'IT' OR COM_TYPE = 'Automobile';  this is using normal OR condition
+
+using LIST i.e. IN feature-
+Select * FROM Company where COM_TYPE IN ('IT','Automobile');
+
+using LIST i.e. NOT IN feature- where the list will not contain the existing column details
+Select * from COmpany where COM_TYPE NOT IN ('IT');
+
+using RANGE i.e. between a company ID:
+Select * from Company where COM_Id BETWEEN 14 AND 16;
+
+selecting a range that is not between a specific range:
+Select * from Company where COM_ID NOT BETWEEN 15 AND 17;
+
+** Fetching unique data from column and Fetch table structure:
+
+COM_Id  COM_Name  COM_Type  COM_Revenue
+11	Accent	  IT		20 Million
+12	Trinity	  Automobile	14 Million
+13	CT	  IT		29 Million
+14	Zydus	  Pharma  	50 Million
+15	FIS	  IT		20 Million
+16	CT	  IT		11 Million
+17	Trinity	  Automobile	9  Million
+
+"distinct" keyword is usually used to fetch unique entries from company table..
+Select distinct Company from COM_Type.
+this will provide the unique records from the column COM_Type based on its unique values.
+
+** Fetch table structure-
+
+describe keyword is used to get all the records from the table:
+
+describe Company;
+
+** Sorting the values based on Ascending and Desc order
+
+Select * from Company ORDER BY COM_Revenue AESC;
+
+Select * from Company ORDER BY COM_Revenue DESC; 
+
+** sorting the order based on a condition in a descending order:
+
+Select * from Company where COMP_Type = 'IT' ORDER BY COMP_Id Desc;
+
+** Sorting based on 2 columns, or 1 or more column
+
+Select * from Company ORDER BY COMP_ID ASEC, COM_Revenue
+
+*** Regular Expressions in SQL:
+%- matches any sequence of characters
+_- matches any single charactyer
+% can be mentioned after a character, starting with a specific character and later with other characters
+
+LIKE, NOT LIKE and ILIKE:
+
+NOT LIKE: if u want to fetch the records that'll not have specific characters in it.
+
+ILIKE is not case sensitive, it doesn't matter if we provide small/upper case letters
+
+Starting with C
+Select * from Company where COM_Name like 'C%';
+
+Ending with T
+Select * from Company where COM_Name like '%T';
+
+records that'll contain specific characters between a word
+Select * from Company where COM_Revenue like '%ll%';
+
+_ means exactly 1 character and later any other characters 
+
+will start with any character but the second character should be A
+Select * from Company where COM_Name like '_T%';
+
+to get last character as T only, should start with a and end with e
+Select * from Company where COM_type like 'a%e_';
+
+
+*** Sub Query -  Merge more than 1 query together, Quet within a query
+
+** Queries for Order By and LIMIT:
+
+**Get the records of first 5 customer id's based on the revenue:
+  Select COM_Id from Company order by COM_Revenue ASC Limit 5;
+
+Write a query where A customer wants to quickly rent a video to watch over their short lunch break. What are the titles of the 5 shortest(in length of runtime) movies:
+Select title, length from film Order By length ASC LIMIT 10;
+
+
+
+ 
+
+
+

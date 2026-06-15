@@ -1,0 +1,109 @@
+Interview questions to be prepared.
+
+*WebTable handling in Selenium. No. of rows and columns how to parameterize.(refer notebook(new) and eclipse code).
+*handling radio buttons with respect to multiple values and select a specific value among those 4-5 values in webtable.
+
+*String manupulation, like occurrences, sort, concate all..
+"String is collection of diff character.
+String str = "if this is what then what is this";
+
+-to find length of string: str.length(); o/p- 30
+-to find char on 5th location: str.charAt(5); o/p- i
+-to find index of t: str.indexOf('t'); o/p- 3 //this is 1st occurrence of t
+-to find index of t after 3rd location: str.indexO('t', str.indexOf(t)+1); o/p-14  //this is 2nd occurrence of t
+-to find index of word is: str.indexOf("is"); o/p- 8
+-to find an index of a string that is not available above: str.indexOf("hello")- this will not throw an error/excetion but give an o/p as -1.
+
+Doing the string comparison:
+String str = "if this is what then what is this";
+String str1 = "if this is what then what is this";
+
+str.equals(str1); //o/p- true
+if the strings are not matching it'll return false.
+
+-to ignore the cases: to ignore the case sensitive 
+str.equalsIgnoreCase(str1); o/p- will return true even if the upper/lower cases mismatches 
+
+- to fetch the range of a string, like a small part from above string i.e. this is: str.substring(2, 9);
+
+- to trim the spaces from given string: String s = "		Hello Akki	";
+use s.trim(); //this will remove before/after space
+
+- to remove space between two words.
+s.replace(" ", ""); o/p- HelloAkki
+
+- to split a String: Return type of Split is String array.
+String test = "Hello_World_Test_Selenium";
+Need to seperate the String on the basis of underscore.
+test.split("_"); this will remove the underscore and 4 strings will be there, so to store them we need array variable.. as normal array will store only a single value.
+String testval[] = test.split("_"); //this testval[] will store 1 by 1 all 4 values in it.
+for(int i=0; i<testval.length; i++){
+syso(is);
+}
+
+*****************************
+To print all character counts in an array
+
+public static void getAllCharCount(String name){
+
+HashMap<Character,Integer> hm = new hashMap<>();
+char[] c = hm.toCharArray();
+
+for(char ch : c){
+if(hm.containsKey(ch)){
+hm.put(ch, hm.get(ch)+1);
+}else{
+hm.put(ch, 1);
+}
+}
+}
+
+
+*****************************
+To print a * pattern
+
+*
+**
+***
+****
+
+4 rows 4 columns:
+
+for(int i=0; i<=3; i++){  		//u can also take (i=0; i<5; i++)
+for(int j=0; j<=i; j++){
+print("*");
+}
+}
+println();
+
+****
+***
+**
+*
+
+for(int i=0; i<=3; i++){
+for(int j=3; j>=i; j--){
+print(*);
+}
+}
+println()
+ 
+***********************************************
+
+Java code for finding duplicate words in a string or text file.. must prepare
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+*Collection hashmap and linkedhash map difference, and all collection type differences.
+*                                                                                                                

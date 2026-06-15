@@ -1,0 +1,240 @@
+**Handlin Datatable in Cucumber:
+
+public void user_enters_testuser__and_Test(DataTable usercredentials) throws Throwable {
+		List<List<String>> data = usercredentials.raw();
+		driver.findElement(By.id("log")).sendKeys(data.get(0).get(0));  //This is to get the first data of the set (First Row + First Column)
+	    driver.findElement(By.id("pwd")).sendKeys(data.get(0).get(1));	//This is to get the first data of the set (First Row + Second Column)
+	    driver.findElement(By.id("login")).click();
+	}
+
+*******************************************************
+
+**Handling Background Keyword in Cucumber:
+
+Feature: Test Background Feature
+Description: The purpose of this feature is to test the Background keyword
+
+Background: User is Logged In
+	Given I navigate to the login page
+	When I submit username and password
+	Then I should be logged in 
+
+Scenario: Search a product and add the first product to the User basket
+	Given User search for Lenovo Laptop
+	When Add the first laptop that appears in the search result to the basket
+	Then User basket should display with added item
+
+Scenario: Navigate to a product and add the same to the User basket
+	Given User navigate for Lenovo Laptop
+	When Add the laptop to the basket
+	Then User basket should display with added item
+
+*******************************************************
+
+Launch browser code:
+
+system.SetProperty("webdriver.chrome.driver","path_of_file");
+
+WebDriverManager.chromedriver().setup();
+
+system.setProperties("webdriver.chrome.driver","path");
+
+WebDriverManager.chromedriver().setup();
+*******************************************************
+
+What do you mean by profile in Cucumber?
+When testing a feature, cucumber profiles make it simple to define groupings of tests in a feature file so that we can choose to execute only a subset of them rather than all of them. It was created to help people save time. In a cucumber.yml file, the user can reuse commonly used cucumber flags.
+
+*******************************************************
+To select option from dropdown using selenium code:
+
+Action action = new Action(driver);
+
+WebElement dropDown = driver.findElement("path of that webelement")
+
+action.moveToElement(dropdown);
+
+<List>WebElement options = driver.FIndElements();
+
+for(WebElement option : options){
+if(option.getText().equals("Texas")){
+option.click();
+}
+}
+
+Action actions = new Action(driver);
+
+
+
+
+*******************************************************
+**To select broken links from webpage
+
+List<WebElement> allList  = driver.findElements(By.tagName(a));
+
+syso("all list size" +allList.size();
+
+Iterator<WebElement> itr = allList.iterator();qqqqqqqq
+
+while(itr.hasNext()){
+String urls  = itr.next().getText();
+}
+syso(urls);
+
+*******************************************************
+
+**Where do we add screen shot method in cucumber or how do we take screen shot for a failed test case in cucumber:
+
+@After(order = 1)
+public void takeScraenshotOnFailure(Scenario scenario) {
+
+if (scenario.isFailed()) {
+
+TakesScreenshot ts = (TakesScreenshot) driver;
+
+byte[] src = ts.getScreenshotAs(QutputType.BYTES);
+scenario.attach(src, "image/png", "screenshot");
+}
+
+
+@After(order = 1)
+
+public void getScreenShot(Scenario scenario){
+if(scenario.isFailed()){
+	TakesScreenshot ts = (TakesScreenshot) driver;
+	Fie[] src = ts.etScreenshotAs(OutputType.File);
+scenario.attach(src, "img/png" "screenshot");
+}
+
+}
+
+So, we define the screen shot location code inside the extent.properties file. as #screenshot.dir = test-output/
+The screenshot gets available inside the folder where you have directed it in the extent.properties file.
+
+*******************************************************
+
+**Write a code for Runner class:
+@RunWith (Cucumber.class)  
+@CucumberOptions (  
+features = "src/test/Sample/features ",  
+glue = {"StepDefinitionFile"}  
+)   
+public class SampleTestRunner {  
+}  
+
+*******************************************************
+
+** What is grouping in the context of Cucumber?
+Cucumber is unconcerned about the names of your step definition files or the order in which you place them. Instead of maintaining all steps in a single file, we can create steps.rb file for each major action/feature. This is referred to as grouping
+
+******************************************************
+****JENKINS************CI/CD ipeline**********
+
+CI- Continous Interation, CD- Continous Delivery (Deployment)- This is basically a SDLC methodlogy to perform a process.
+Pipelines: A step by step process to perform CI/CD.
+
+CI- Continous Interation: Dev will imlement the code and push/move the code in sprints/chunks i.e. on day to day basis, what amnt of wok he does on the code, he'll move it to the IT HUB repository. Later, that'll move to CI server automatically. So, CI server will have 3 imp parts, BUILD, TEST, DEPLOY. So if a code fails with errors after the 3 steps(BUILD, TEST, DEPLOY), Dev will get notified, then he'll rework on the same code and again push it to GIT repo. Once the code is success, dev gets notified as working well then he starts working on other sprint of code.
+[So in Short CI = Continus Build + Continous Test]
+s
+PIPELINE:
+Code Implement => move to Version COntrol(GIT) => Build => Unit Test(test small content of code that is moved) => Deploy => Auto Test(we perform functional/regression test) => Prod env Deploy(at our level, i.e on test env) => Measure & Validate(QA does this, if the code works well)
+
+Here, Dev will get notified on every step that if his code is working well or not. i.e. if any issues happen on GIT llevel/Build level/Unit Test level, he gets notified if any eeor comes in above steps.
+
+
+JENKINS:
+Process:-
+1. Plan and Code- Plan what to imlement, do the implementation and move to GIT HUB.
+2. Build- We build based on tool like MAVEN or GRADLE.
+3. Test- Using Selenium or Junit
+4. Deploy and Operate- We use chef/puppet, to configure and deploy that code to Machine
+5. Monitor- Nagios tool
+
+PLAN						DEPLOY
+CODE		  JENKINS			OPERATE
+	       INTWGRATUIION TOOL		
+BUILD 
+TEST						MONITOR
+
+Once the code is deployed to GIT, JENKINS will pull the code and will send the code to MAVEN, and again sent it to Test, later will send to chef/puppet for deployment or operate
+So, Jenkins serves the task it gets. It automatically performs the task in the pipeline like build, deploy, test etc.
+
+So in easy way to explain:
+Dev writes the code => sends/push to GIT => code will be pulled by JENKINS => will send for build and use MAVEN for build process(Build means it compiles the code i.e. create an executable file exe) => After Build JENKINS will again pull that code/file back and will send it to Test(we use selenium) => After test it'll validate the quality assurance part. ==> Once this process is done[i.e. CI, we move to CD], JENKINS will DEPLOY(means to deploy the application on the client side and install it and show how it works to the cient) the code or DELIVER(means application is ready and ready to install)
+
+JENKINS PLUGIN: Plugins are usd to communicate or integrate JENKINS with GIT, Selenium, maven etc to perform diff task.
+[Note: GIT will have a dummy/source code and ARTIFACTRY will have a orignal/final code].
+
+Process in BUILD: Compile => Code Review => Unit Testing => Integration Testing => Packaging(Jars,Wars)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
